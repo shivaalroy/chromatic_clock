@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="utf-8">
+	<title>What Color Is It</title>
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<script type="text/javascript">
+		function now() {
+			var d = new Date();
+			var offset = d.getTimezoneOffset();
+			var singleDigitHours = d.getHours();
+			var hours = ("0" + singleDigitHours).slice(-2); // => 09
+			var minutes = ("0" + d.getMinutes()).slice(-2); // =>  30
+			var seconds = ("0" + d.getSeconds()).slice(-2); // => 51
+			document.getElementById("center").innerHTML = hours + " : " + minutes + " : " + seconds;
+			var color = "#" + hours + minutes + seconds;
+			document.body.style.backgroundColor = color;
+			document.getElementById("color").innerHTML = color;
+			// EXTENSIONS
+			// extension 1
+			// document.getElementById("color").style.color = invertColor(color);
+		}
+
+		function invertColor(hexTripletColor) {
+			var color = hexTripletColor;
+			color = color.substring(1); // remove #
+			color = parseInt(color, 16); // convert to integer
+			color = 0xFFFFFF ^ color; // invert three bytes
+			color = color.toString(16); // convert to hex
+			color = ("000000" + color).slice(-6); // pad with leading zeros
+			color = "#" + color; // prepend #
+			return color;
+		}
+	</script>
+	<style type="text/css">
+		html {
+			height: 100%;
+		}
+		body {
+			font-family: "Open Sans";
+			font-weight: 300;
+			color: white;
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			height: 100%;
+			width: 100%;
+		}
+		#center {
+			position: relative;
+			top: calc(40% - 60px);
+			vertical-align: middle;
+			font-size: 120px;
+		}
+		#color {
+			position: absolute;
+			margin: 0 auto;
+			left: 0;
+			right: 0;
+			top: 70%;
+			vertical-align: middle;
+			font-size: 24px;
+		}
+	</style>
+</head>
+
+<body onload="setInterval(now, 1000);">
+	<div id="center"></div>
+	<div id="color">
+		<!--#<span id="hours"></span><span id="minutes"></span><span id="seconds"></span>-->
+	</div>
+</body>
+
+</html>

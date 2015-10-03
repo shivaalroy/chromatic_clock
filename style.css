@@ -1,0 +1,25 @@
+html {
+    height: 100%;
+}
+body {
+	font-family: "Open Sans", serif;
+	font-weight: 300;
+	color: white;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	height: 100%;
+	width: 100%;
+}
+#center {
+	position: relative;
+	top: calc(40% - 60px);
+	vertical-align: middle;
+	font-size: 120px;
+}
+#color {
+	position: relative;
+	top: 400px;
+	vertical-align: middle;
+	font-size: 30px;
+}
